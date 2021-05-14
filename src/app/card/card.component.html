@@ -1,0 +1,37 @@
+<h1>FlashCards</h1>
+<hr>
+<div class="row container">
+  <div class="col-md-6">
+    <app-card-form (addCard)="addNewCard($event)"></app-card-form>
+  </div>
+
+  <div class="col-md-6">
+    <ol>
+      <li *ngFor='let card of cards;let i = index'>
+          <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"  (click)='toggleDetails(i)'>{{card.name}}</h5>
+                <p class="card-text"><app-card-desc *ngIf='card.showDescription' [card]='card' (isRead)='completeCard($event,i)' ></app-card-desc>
+                </p>
+               
+              </div>
+            </div>
+          
+      </li>
+    </ol>
+  </div>
+ 
+</div>
+
+
+
+
+<!-- 
+  <ul>
+    <li *ngFor='let card of cards;let i = index'>
+        
+        <button (click)='toggleDetails(i)'>{{card.name}}</button>
+        <app-card-desc *ngIf='card.showDescription' [card]='card' (isRead)='completeCard($event,i)' ></app-card-desc>
+    </li>
+
+</ul> -->
